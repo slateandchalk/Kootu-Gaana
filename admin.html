@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kootu Gaana Admin</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Icons & Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="shortcut icon" href="icons/favicon.ico">
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Admin Console</h1>
+
+        <!-- Login Section -->
+        <div id="login-section"
+            style="display: flex; flex-direction: column; align-items: center; gap: 10px; max-width: 300px; margin: 0 auto;">
+            <img src="images/mid_logo.png" class="mid-logo" alt="Mid Logo" style="width: 200px; margin-bottom: 20px;">
+            <input type="email" id="email" placeholder="Email (Username)" style="padding: 10px; width: 100%;">
+            <input type="password" id="password" placeholder="Password" style="padding: 10px; width: 100%;">
+            <button id="login-btn" style="width: 100%; margin-top: 10px;">Login</button>
+            <p id="auth-message" style="color: red; margin-top: 10px;"></p>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard-section" class="hidden">
+            <div id="status-bar" class="status-bar">
+                <p id="current-status">Current State: Unknown</p>
+            </div>
+
+            <h2>Global Controls</h2>
+            <button id="start-event-btn">Start Event</button>
+            <button id="end-event-btn">End Event</button>
+
+            <h2>Song Controls</h2>
+            <div id="song-buttons" class="admin-container">
+                <!-- Buttons will be generated here -->
+            </div>
+
+            <h2 style="margin-top: 30px;">Song Statistics (Likes)</h2>
+            <div style="overflow-x: auto;">
+                <table id="stats-table"
+                    style="width: 100%; border-collapse: collapse; margin-top: 10px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                    <thead>
+                        <tr style="background: rgba(255,255,255,0.1); text-align: left;">
+                            <th style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">Song Title</th>
+                            <th style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">Likes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stats-body">
+                        <!-- Stats rows will be generated here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 style="margin-top: 30px;">User Feedback</h2>
+            <div style="overflow-x: auto;">
+                <table id="feedback-table"
+                    style="width: 100%; border-collapse: collapse; margin-top: 10px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                    <thead>
+                        <tr style="background: rgba(255,255,255,0.1); text-align: left;">
+                            <th style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">Time</th>
+                            <th style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">Roll No</th>
+                            <th style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">Rating</th>
+                            <th style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody id="feedback-body">
+                        <!-- Feedback rows will be generated here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; width: 100%;">
+                <button id="logout-btn" class="secondary-btn">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/firebase-config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

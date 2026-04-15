@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Feedback Collection Rules
+    match /feedback/{feedbackId} {
+      allow create: if true;
+      // Only the specific admin can read feedback
+      allow read: if request.auth != null && request.auth.token.email == 'admin@kootugaana.com';
+    }
+    
+    // Likes Collection Rules
+    match /likes/{likeId} {
+      allow create: if true;
+      allow read: if request.auth != null && request.auth.token.email == 'admin@kootugaana.com';
+    }
+  }
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kootu Gaana Live</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Icons & Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="shortcut icon" href="icons/favicon.ico">
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen vertical-layout">
+            <img src="images/top_logo.png" class="top-logo" alt="Top Logo">
+            <img src="images/mid_logo.png" class="mid-logo" alt="Mid Logo">
+            <img src="images/third_logo.png" class="third-logo" alt="Third Logo">
+            <div class="bottom-text">
+                <p id="countdown-timer" style="font-size: 1.5rem; font-weight: bold; color: var(--accent-secondary);">
+                    Loading...</p>
+                <p id="event-message" class="hidden">The event is about to begin...</p>
+            </div>
+        </div>
+
+        <!-- Song Display Screen -->
+        <div id="song-screen" class="screen hidden">
+            <h2 id="song-title">Song Title</h2>
+            <div id="song-lyrics" class="lyrics">
+                <!-- Lyrics will be injected here -->
+            </div>
+
+            <!-- Live Like Button -->
+            <div id="like-container">
+                <button id="like-btn">♥</button>
+            </div>
+        </div>
+
+        <!-- End Screen -->
+        <div id="end-screen" class="screen vertical-layout hidden">
+            <img src="images/top_logo.png" class="top-logo" alt="Top Logo">
+            <img src="images/mid_logo.png" class="mid-logo" alt="Mid Logo">
+            <img src="images/third_logo_end.png" class="third-logo" alt="Third Logo">
+            <div class="bottom-text">
+                <p>Thank You!</p>
+                <p>We hope you enjoyed Kootu Gaana.</p>
+
+                <form id="feedback-form" style="margin-top: 20px;">
+                    <input type="text" id="roll-number" placeholder="ID (e.g. 23BME139 or K01414)"
+                        pattern="([0-9]{2}[a-zA-Z]{3}[0-9]{2,3})|([a-zA-Z][0-9]{5})"
+                        title="Format: 23BME139 (2 digits, 3 letters, 2-3 digits) OR K01414 (1 letter, 5 digits)"
+                        required>
+
+                    <div class="textarea-container">
+                        <textarea id="feedback-text" placeholder="Your feedback (optional)..."
+                            maxlength="600"></textarea>
+                        <div id="char-count" class="char-count">0/600</div>
+                    </div>
+
+                    <!-- Heart Rating -->
+                    <div class="rating-container">
+                        <div id="heart-rating">
+                            <span class="heart" data-value="1">★</span>
+                            <span class="heart" data-value="2">★</span>
+                            <span class="heart" data-value="3">★</span>
+                            <span class="heart" data-value="4">★</span>
+                            <span class="heart" data-value="5">★</span>
+                        </div>
+                        <input type="hidden" id="selected-rating" value="1">
+                    </div>
+
+                    <button type="submit" class="btn secondary-btn">Submit</button>
+                </form>
+                <div id="feedback-success" class="hidden" style="color: var(--accent-primary); margin-top: 10px;">
+                    Thanks for your feedback!
+                </div>
+
+                <p>With love, Band Agratha</p>
+            </div>
+        </div>
+        <!-- Mid Side Decorations -->
+        <img src="images/left_mid_side.png" class="mid-decoration left-mid-deco" alt="Left Mid Decoration">
+        <img src="images/right_mid_side.png" class="mid-decoration right-mid-deco" alt="Right Mid Decoration">
+
+        <!-- Bottom Decorations -->
+        <img src="images/left_side.png" class="bottom-decoration left-deco" alt="Left Decoration">
+        <img src="images/right_side.png" class="bottom-decoration right-deco" alt="Right Decoration">
+
+    </div>
+
+    <script src="js/firebase-config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

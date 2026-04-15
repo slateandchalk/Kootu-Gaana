@@ -1,0 +1,378 @@
+:root {
+    --bg-color: #281d19;
+    --text-main: #ffdeb2;
+    --accent-primary: #dd2230;
+    --accent-secondary: #fec777;
+    --font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-family);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+#app {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    /* Ensure content is above background decorations */
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Typography & Layout */
+h1 {
+    font-size: 2.5rem;
+    color: var(--accent-secondary);
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: var(--accent-primary);
+    margin-bottom: 15px;
+}
+
+.lyrics {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    /* Keeps formatting */
+    text-align: center;
+    /* Center lyrics */
+    margin-top: 20px;
+    padding: 10px;
+    border-left: 2px solid var(--accent-primary);
+    /* Stylish accent */
+    border-right: 2px solid var(--accent-primary);
+}
+
+/* Buttons (Admin & Client if needed) */
+button {
+    background-color: var(--accent-primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #3e7a70;
+}
+
+.secondary-btn {
+    background-color: var(--accent-secondary);
+    color: #2a2b2b;
+}
+
+.secondary-btn:hover {
+    background-color: #d99632;
+}
+
+.active-btn {
+    background-color: var(--text-main) !important;
+    color: var(--bg-color) !important;
+    border: 2px solid var(--accent-secondary) !important;
+    font-weight: bold;
+    transform: scale(1.05);
+}
+
+.active-global-btn {
+    background-color: #fec777 !important;
+    /* Secondary Color */
+    color: #281d19 !important;
+    /* Dark Text */
+    border: 2px solid #dd2230 !important;
+    /* Primary Border */
+    font-weight: bold;
+    transform: scale(1.05);
+}
+
+/* Admin Specific */
+.admin-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.song-btn {
+    width: 150px;
+}
+
+.status-bar {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Vertical Layout for Start/End Screens */
+.vertical-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.top-logo {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.mid-logo {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    /* Reduced to make room */
+}
+
+.third-logo {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.bottom-text {
+    margin-top: 10px;
+}
+
+.bottom-text p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+}
+
+/* Bottom Decorations */
+.bottom-decoration {
+    position: fixed;
+    bottom: 0;
+    max-height: 15vh;
+    /* Adjust based on image size */
+    max-width: 30vw;
+    z-index: -1;
+    /* Behind content */
+    pointer-events: none;
+    /* Let clicks pass through */
+}
+
+.left-deco {
+    left: 0;
+}
+
+.right-deco {
+    right: 0;
+}
+
+/* Mid Side Decorations */
+.mid-decoration {
+    position: fixed;
+    transform: translateY(-50%);
+    max-height: 20vh;
+    /* Adjust based on image size */
+    max-width: 15vw;
+    z-index: -1;
+    /* Behind content */
+    pointer-events: none;
+}
+
+.left-mid-deco {
+    left: 0;
+    top: 25%;
+}
+
+.right-mid-deco {
+    right: 0;
+    top: 75%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .lyrics {
+        font-size: 1rem;
+    }
+
+    .bottom-decoration {
+        max-height: 10vh;
+    }
+
+    .mid-decoration {
+        max-height: 15vh;
+    }
+}
+
+/* Feedback Form */
+#feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#feedback-form input,
+#feedback-form textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--accent-primary);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    font-family: var(--font-family);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#feedback-form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+#feedback-form input:focus,
+#feedback-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-secondary);
+}
+
+/* Validation Styling */
+#feedback-form input:invalid {
+    border-color: red;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .lyrics {
+        font-size: 1rem;
+    }
+}
+
+/* Rating & Textarea Extras */
+.rating-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+#heart-rating {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.heart {
+    color: #555;
+    /* Default unselected */
+    transition: color 0.2s;
+}
+
+.heart.selected {
+    color: var(--accent-secondary);
+    /* Gold/Yellow */
+}
+
+.textarea-container {
+    position: relative;
+}
+
+.char-count {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+}
+
+/* Live Like Button */
+#like-container {
+    position: fixed;
+    bottom: 10%;
+    right: 20px;
+    z-index: 100;
+}
+
+#like-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--accent-primary);
+    border: 2px solid var(--accent-primary);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+#like-btn:active {
+    transform: scale(0.9);
+}
+
+.flying-heart {
+    position: fixed;
+    color: var(--accent-primary);
+    font-size: 24px;
+    pointer-events: none;
+    animation: flyUp 1.5s ease-out forwards;
+    z-index: 99;
+}
+
+@keyframes flyUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1) translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-200px) scale(1.5) translateX(var(--random-x));
+    }
+}
